@@ -118,7 +118,7 @@
                 <li class="join-items"><img src="images/join1.jpg"></li>
             </ul>
             <ul class="join-list">
-                <li class="join-items"><img src="images/join6.png"></li>
+                <li class="join-items"><img src="images/join6.jpg"></li>
                 <li class="join-items">
                     <i class="join-icon join-icon2"></i>
                     <p class="join-iconp">公司介绍</p>
@@ -138,7 +138,7 @@
                 <li class="join-itemno"></li>
                 <li class="join-itemno"></li>
                 <li class="join-items"><img src="images/join4.jpg"></li>
-                <li class="join-items"><img src="images/join5.jpg"></li>
+                <li class="join-items"><img src="images/join6.png"></li>
                 <li class="join-items">
                     <i class="join-icon join-icon5"></i>
                     <p class="join-iconp">全球资源</p>
