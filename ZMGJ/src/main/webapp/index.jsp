@@ -103,7 +103,7 @@
     </div>
     <!--走进知脉-->
     <div id="join">
-        <div class="w jo-con" onclick="goToBusiness();">
+        <div class="w jo-con" >
             <p class="wtit">走进<i class="wicon"></i>知脉</p>
             <p class="wtext"></p>
             <ul class="join-list">
@@ -118,8 +118,8 @@
                 <li class="join-items"><img src="images/join1.jpg"></li>
             </ul>
             <ul class="join-list">
-                <li class="join-items"><img src="images/join6.jpg"></li>
-                <li class="join-items">
+                <li class="join-items" onclick="goToBusiness();"><img src="images/join6.jpg"></li>
+                <li class="join-items" onclick="goToBusiness();">
                     <i class="join-icon join-icon2"></i>
                     <p class="join-iconp">公司介绍</p>
                 </li>
