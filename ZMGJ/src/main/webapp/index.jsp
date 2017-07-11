@@ -105,8 +105,7 @@
     <div id="join">
         <div class="w jo-con" onclick="goToBusiness();">
             <p class="wtit">走进<i class="wicon"></i>知脉</p>
-            <p class="wtext">面向知识经济、数字经济和经济全球化，打造并运营3S（span或stride across，跨文化、跨行业、跨体制）全球商务实体网络，为国内
-                高净值群体及其家属提供人力资源全生命周期外包服务。</p>
+            <p class="wtext"></p>
             <ul class="join-list">
                 <li class="join-itemss">
                     <p>ZHIMAI</p>
