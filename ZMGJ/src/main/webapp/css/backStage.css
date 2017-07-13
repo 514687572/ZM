@@ -5715,7 +5715,7 @@ storePhone
 #adLeft .twoTree li{
 	padding-left: 20px;
 }
-.thridTree li{
+#adLeft .thridTree li{
 	height: 30px;
 	color: #d9b962;
 }

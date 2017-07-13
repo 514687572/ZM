@@ -18,7 +18,7 @@
 			$("#buCText img").css({
 				"height" : "auto;"
 			});
-			 var h=$(document).height()+201;
+			 var h=$("#buCText").height()+201;
 			console.log(h);
 			 parent.document.getElementById("info").style.height = h +"px";
 		})

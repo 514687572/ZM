@@ -435,3 +435,7 @@ p,span,li,div{
 .inview.pc-delay12 {  animation-delay:1.2s;-webkit-animation-delay:1.2s;}
 .inview.pc-delay13 {  animation-delay:1.3s;-webkit-animation-delay:1.3s;}
 
+#work #wlist .wlist-items img{
+    display: block;
+    margin: 0 auto;
+}

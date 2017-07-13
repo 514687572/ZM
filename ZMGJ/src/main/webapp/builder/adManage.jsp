@@ -459,17 +459,18 @@ function adShowTitle(type,Index,obj){
 		success:function(data){
 			var strli = "";
 			if(data.success){
+				console.log(data.adInfo);
 				 $.each(data.adInfo,function(i,item){
-					 strli+='<li id='+item.adId+' onclick="showAdInfo('+"'"+item.adId+"'"+','+type+');" style="color:#d9b962;" title="'+item.adTitle+'">'+item.adTitle+'</li>';
-					 if($(obj).find("ul").attr("class")){
-						 $(obj).find("ul").empty();
-						 $(obj).find("ul").append(strli);
-					 }else{
-						 if( $(obj).next("ul").eq(0).height()==0){
-							 $(obj).next("ul").eq(0).append(strli);
-						 }
-					 }
+					 strli+='<li class="thridTree" id='+item.adId+' onclick="showAdInfo('+"'"+item.adId+"'"+','+type+');" style="color:#d9b962;height: 30px;line-height: 30px;" title="'+item.adTitle+'">'+item.adTitle+'</li>';
 				});
+				 if($(obj).find("ul").attr("class")){
+					 $(obj).find("ul").empty();
+					 $(obj).find("ul").append(strli);
+				 }else{
+					 if( $(obj).next("ul").eq(0).height()==0){
+						 $(obj).next("ul").eq(0).append(strli);
+					 }
+				 }
 			} 
 		}	
 	  }); 
