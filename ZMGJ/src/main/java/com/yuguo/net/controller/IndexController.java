@@ -31,6 +31,9 @@ import com.yuguo.net.service.ISysDictionaryService;
 @RequestMapping("zmgj")
 public class IndexController {
 
+	public static void main(String[] args) {
+		System.out.println('4' + 0 + "0");
+	}
 	@Resource
 	private ISysDictionaryService sysDictionaryService;
 	@Resource
@@ -93,7 +96,7 @@ public class IndexController {
 	@RequestMapping(value = "/loadModules.do", method = { RequestMethod.POST, RequestMethod.GET })
 	public @ResponseBody Map<String,Object> loadModules(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Map<String, Object> jsonResult = new HashMap<String, Object>();
-		jsonResult = sysDictionaryService.getModules();
+		jsonResult = sysDictionaryService.getModules(request);
 		return jsonResult;
 	}
 	
@@ -111,7 +114,10 @@ public class IndexController {
 	public @ResponseBody Map<String,Object> getBusinessCollege(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		Map<String, Object> jsonResult = new HashMap<String, Object>();
 		String pId = request.getParameter("id");
-		jsonResult = sysDictionaryService.getModulesByParentId(pId);
+		String type = request.getSession().getAttribute("type") + "";
+		if(type == null || "".equals(type) || "null".equals(type))
+			type = "1";
+		jsonResult = sysDictionaryService.getModulesByParentId(pId,type);
 		return jsonResult;
 	}
 
@@ -179,16 +185,48 @@ public class IndexController {
 		String adId = request.getParameter("adId");
 		SysAdvertiseAdminExample example = new SysAdvertiseAdminExample();
 		example.createCriteria().andAdIdEqualTo(adId);
+		example.setOrderByClause("sysAdvertiseAdmin.AD_INDEX");
 		List<SysAdvertiseAdmin> list = advertiseAdminService.selectByExample(example);
-		SysAdvertiseAdmin adv = list.get(0);
-		adv.setRemark1(new String(adv.getAdDesc(),"gbk"));
-		adv.setRemark(new SimpleDateFormat("yyyy-MM-dd HH:mm").format(adv.getCreateTime()));
-		jsonResult.put("adv", adv);
-		String typeName = request.getParameter("typeName");
-		typeName = java.net.URLDecoder.decode(typeName,"UTF-8");
-		jsonResult.put("typeName", typeName);
+		if(list != null && list.size() > 0) {
+			SysAdvertiseAdmin adv = list.get(0);
+			String content= "";
+			for (int i = 0; i < list.size(); i++) {
+				String title = "<p id='title_1'>" + adv.getRemark() + "</p>";
+				content += title + new String(adv.getAdDesc(),"gbk");
+			}
+			adv.setRemark1(content);
+			adv.setRemark2(new SimpleDateFormat("yyyy-MM-dd HH:mm").format(adv.getCreateTime()));
+			jsonResult.put("adv", adv);
+			String typeName = request.getParameter("typeName");
+			typeName = java.net.URLDecoder.decode(typeName,"UTF-8");
+			jsonResult.put("typeName", typeName);
+			jsonResult.put("list", list);
+		}
+		
 		return jsonResult;
 	}
+	
+
+	/**
+	 * 
+	 * @param request
+	 *            请求信息
+	 * @param response
+	 *            响应信息
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/changeLaug.do", method = { RequestMethod.POST, RequestMethod.GET })
+	public @ResponseBody Map<String, Object> changeLaug(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		Map<String, Object> jsonResult = new HashMap<String, Object>();
+		jsonResult.put("success", Boolean.TRUE);
+		String type = request.getParameter("type");
+		type = !"".equals(type) && type != null ? type : "1";
+		request.getSession().setAttribute("type", type);
+		return jsonResult;
+	}
+	
+	
 	
 
 }

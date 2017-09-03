@@ -3,6 +3,8 @@ package com.yuguo.net.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.yuguo.net.model.SysDictionary;
 import com.yuguo.net.model.SysDictionaryExample;
 
@@ -22,12 +24,13 @@ public interface ISysDictionaryService {
 	 * @return
 	 * @throws Exception 
 	 */
-	Map<String, Object> getModules() throws Exception;
+	Map<String, Object> getModules(HttpServletRequest request) throws Exception;
 
 	/**
 	 * @param pId
 	 * @return
 	 * @throws Exception 
 	 */
-	Map<String, Object> getModulesByParentId(String pId) throws Exception;
+	Map<String, Object> getModulesByParentId(String pId,String type) throws Exception;
+
 }
