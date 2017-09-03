@@ -21,12 +21,13 @@
     color: #e3c575;
 }
 #head #nav{
-    width: 950px;
+    width: 1025px;
     margin: 0 auto;
+    padding: 0 2px;
 }
 #head #nav .nav-items{
     float: left;
-    width: 130px;
+    width: 142px;
     height: 40px;
     margin-top: 40px;
     line-height: 40px;
@@ -184,6 +185,32 @@
 @keyframes imgScale{
     0%{opacity:0;-webkit-transform:scale(.4);}
     100%{opacity:1;-webkit-transform:scale(1);}
+}
+
+/**悬浮*/
+#flootmenu{
+    position: fixed;
+    width: 120px;
+    height: auto;
+    top: 50%;
+    left: 50px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    overflow: hidden;
+    background-color: #e3c575;
+}
+#flootmenu a{
+    display: block;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    border-bottom: 1px solid #fff ;
+}
+#flootmenu a:last-child{
+    border-bottom: none;
 }
 
 

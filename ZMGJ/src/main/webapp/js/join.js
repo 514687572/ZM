@@ -1,5 +1,14 @@
 $(function() {
-	loadBusinessCollegeType(3);
+	loadBusinessCollegeType($(".nav-items a").eq(2).attr("id"));
+	$(".nav-items a").removeClass("head-tivace");
+	$(".nav-items a").eq(1).addClass("head-tivace");
+	if(laugType == '2') {
+		$(".chinese").attr("style","");
+		$(".english").attr("style","color: #e3c575;");
+	} else {
+		$(".english").attr("style","");
+		$(".chinese").attr("style","color: #e3c575;");
+	}
 })
 // 加载一级分类
 function loadBusinessCollegeType(id) {
@@ -158,7 +167,7 @@ function loadAdInfo(id, page, name) {
 				$("#adv").show();
 			} else {
 				$("#fy").hide();
-				$("#adv").html("暂无数据");
+				$("#adv").html("暂无数据Temporarily no data");
 			}
 		}
 	})

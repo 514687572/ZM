@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="${ctx }/css/CommonCss.css">
     <link rel="stylesheet" href="${ctx }/css/common.css">
     <link rel="stylesheet" href="${ctx }/css/index.css">
+	<script type="text/javascript" src="${ctx }/js/index.js"></script>
 </head>
 <body>
 <div id="page">
@@ -27,9 +28,9 @@
             </ul>
         </div>
         <div id="language">
-            <a class="chinese" style="color: #e3c575;">中文</a>
+            <a class="chinese" onclick="changeLaug(1)" style="color: #e3c575;">中文</a>
             <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-            <a class="english">English</a>
+            <a class="english" onclick="changeLaug(2)">English</a>
         </div>
     </div>
     <!--展示图片区-->
@@ -148,8 +149,12 @@
     </div>
     <!--底部-->
     
-    
-<%@include file="/common/foot.jsp"%>
+ <c:if test="${laugType != '2' }">
+	<%@include file="/common/foot.jsp"%>
+ </c:if>
+ <c:if test="${laugType == '2' }">
+	<%@include file="/common/enFoot.jsp"%>
+ </c:if>
 </div>
 <script type="text/javascript">
 	function goToPage(type) {
@@ -158,6 +163,9 @@
 	function goToBusiness() {
 		location.href=ctx+"/business.jsp";
 	}
+	$(".chinese,.english").on("click",function() {
+		window.location.reload();
+	})
 </script>
 </body>
 </html>

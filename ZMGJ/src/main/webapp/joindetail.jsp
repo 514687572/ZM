@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="${ctx }/css/common.css">
 <link rel="stylesheet" href="${ctx }/css/index.css">
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+<script type="text/javascript" src="${ctx }/js/index.js"></script>
 </head>
 <body>
 	<div id="page">
@@ -28,11 +29,15 @@
 					<li class="nav-items"><a href="${ctx }/Contactus.jsp">联系我们</a></li>
 				</ul>
 			</div>
-			<div id="language">
-				<a class="chinese" style="color: #e3c575;">中文</a> <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-				<a class="english">English</a>
-			</div>
+        <div id="language">
+            <a class="chinese" onclick="changeLaug(1)" style="color: #e3c575;">中文</a>
+            <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+            <a class="english" onclick="changeLaug(2)">English</a>
+        </div>
 		</div>
+		<div id="flootmenu">
+	    </div>
+			
 		<!--走进知脉详情页-->
 		<div class="w">
 			<div class="de-tit">
@@ -47,7 +52,12 @@
 		<!--底部-->
 
 
-		<%@include file="/common/foot.jsp"%>
+ <c:if test="${laugType != '2' }">
+	<%@include file="/common/foot.jsp"%>
+ </c:if>
+ <c:if test="${laugType == '2' }">
+	<%@include file="/common/enFoot.jsp"%>
+ </c:if>
 	</div>
 	<script type="text/javascript">
 	window.onload=function() {
@@ -77,18 +87,23 @@
 				success:function(data) {
 					if(data.success) {
 						$(".de-tits").text(data.adv.adDetailDesc);
-						$(".de-time").text(data.adv.remark);
+						$(".de-time").text(data.adv.remark2);
 						$("#title").text(data.typeName);
 						if(data.typeName == "往期回顾") {
 							$(".nav-items a").removeClass("head-tivace");
 							$("#wqhg").addClass("head-tivace");
 						}
 						$(".de-ctext").html(data.adv.remark1);
+						$.each(data.list,function(index,item) {
+							$("flootmenu").append("<a>" + item.remark + "</a>");
+						})
 					}
 				}
 			})
 		}
-		
+		$(".chinese,.english").on("click",function() {
+			window.location.href = ctx + "/index.jsp";
+		})
 	</script>
 </body>
 </html>

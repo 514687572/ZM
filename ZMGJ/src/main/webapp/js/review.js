@@ -1,5 +1,16 @@
 $(function() {
-	loadAdInfo(4,1);
+	loadAdInfo($(".nav-items a").eq(3).attr("id"),1);
+	$(".nav-items a").removeClass("head-tivace");
+	$(".nav-items a").eq(3).addClass("head-tivace");
+	if(laugType == '2') {
+		$(".chinese").attr("style","");
+		$(".english").attr("style","color: #e3c575;");
+		$(".jo-tabctit").html("Review");
+	} else {
+		$(".english").attr("style","");
+		$(".chinese").attr("style","color: #e3c575;");
+		$(".jo-tabctit").html("往期回顾");
+	}
 })
 
 // 加载详情
@@ -14,13 +25,21 @@ function loadAdInfo(id,page) {
 		},
 		type : "post",
 		success : function(data) {
-			$("#infoList p").eq(0).text("往期回顾");
+			if(laugType == '2') {
+				$("#infoList p").eq(0).text("Review");
+			} else {
+				$("#infoList p").eq(0).text("往期回顾");
+			}
 			if (data.success) {
 				// 加载详情
 				var str = "";
 				$.each(data.list, function(index,item) {
 					var time = new Date(item.createTime).Format("yyyy-MM-dd hh:mm");
-					var name = encodeURI("往期回顾");   
+					if(laugType == '2') {
+						var name = encodeURI("Review");   
+					}else {
+						var name = encodeURI("往期回顾");   
+					}
 					str += "<li class='jo-msglists clearfloat'>"+
 				               "    <a href='"+ ctx+"/joindetail.jsp?adId="+item.adId+"&typeName=" + name +"' >"+
 				              "      <p>"+item.adDetailDesc+"</p>"+
@@ -44,7 +63,7 @@ function loadAdInfo(id,page) {
 				$("#fy").show();
 			} else{
 				$("#fy").hide();
-				$(".jo-msglist").html("暂无数据");
+				$(".jo-msglist").html("暂无数据Temporarily no data");
 			}
 		}
 	})

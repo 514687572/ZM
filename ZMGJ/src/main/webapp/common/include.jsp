@@ -3,9 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@page isELIgnored="false"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
+<c:set var="laugType" scope="session" value="${sessionScope.type}" />
 <script src="${ctx}/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
 var ctx = "${ctx}";
+var laugType = "${laugType}";
 
 Date.prototype.Format = function (fmt) { //author: meizz 
     var o = {

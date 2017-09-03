@@ -1,5 +1,14 @@
 $(function() {
-	loadBusinessCollegeType(2);
+	loadBusinessCollegeType($(".nav-items a").eq(1).attr("id"));
+	$(".nav-items a").removeClass("head-tivace");
+	$(".nav-items a").eq(2).addClass("head-tivace");
+	if(laugType == '2') {
+		$(".chinese").attr("style","");
+		$(".english").attr("style","color: #e3c575;");
+	} else {
+		$(".english").attr("style","");
+		$(".chinese").attr("style","color: #e3c575;");
+	}
 })
 var typeId,typeName;
 // 加载一级分类
