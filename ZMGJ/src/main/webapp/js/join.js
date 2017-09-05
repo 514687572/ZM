@@ -1,7 +1,7 @@
 $(function() {
 	loadBusinessCollegeType($(".nav-items a").eq(2).attr("id"));
 	$(".nav-items a").removeClass("head-tivace");
-	$(".nav-items a").eq(1).addClass("head-tivace");
+	$(".nav-items a").eq(2).addClass("head-tivace");
 	if(laugType == '2') {
 		$(".chinese").attr("style","");
 		$(".english").attr("style","color: #e3c575;");

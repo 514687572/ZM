@@ -965,6 +965,8 @@ function adColse() {
 	 $("#ggqtwz").empty();
 	 $("#ggwz1").empty();
 	 $("#ggqtwz1").empty();
+	 $("#duanluo").val("");
+	 $("#lmmd").val("");
 	 document.getElementById("adIdIpt").value="";
 	 document.getElementById("adIsUpload").value="";
 }
@@ -1138,7 +1140,7 @@ $(document).ready(function(){
 		var adType = $(this).children('option:selected').val();
 		$("#"+divId).empty();
 		divId = "adIndexDiv";
-		$("#adIndexDiv").load('${ctx}/builder/indexAd.jsp?type=1');
+		$("#adIndexDiv").load('${ctx}/builder/indexAd.jsp?type='+adType);
 // 		getAdPageInfo(adType);
 	});
 });
