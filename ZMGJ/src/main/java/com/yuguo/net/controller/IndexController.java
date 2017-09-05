@@ -191,8 +191,11 @@ public class IndexController {
 			SysAdvertiseAdmin adv = list.get(0);
 			String content= "";
 			for (int i = 0; i < list.size(); i++) {
-				String title = "<p id='title_1'>" + adv.getRemark() + "</p>";
-				content += title + new String(adv.getAdDesc(),"gbk");
+				String title = "<p id='title_" + (i+1) +"'>" + adv.getRemark() + "</p>";
+				if(adv.getRemark() != null && !"".equals(adv.getRemark()))
+					content += title + new String(adv.getAdDesc(),"gbk");
+				else 
+					content += new String(adv.getAdDesc(),"gbk");
 			}
 			adv.setRemark1(content);
 			adv.setRemark2(new SimpleDateFormat("yyyy-MM-dd HH:mm").format(adv.getCreateTime()));
