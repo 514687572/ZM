@@ -22,34 +22,6 @@
 		<property name="sqlMapClient" ref="sqlMapClient"></property>
 	</bean>
 	
-	  <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-        <property name="host" value="smtp.sina.com"/>
-        <property name="port" value="25"/>
-        <property name="username" value="chenjunanmail@sina.com"/>
-        <property name="password" value="15882898185"/>
-        <property name="javaMailProperties">
-            <props>
-                <!-- Use SMTP transport protocol -->
-                <prop key="mail.transport.protocol">smtp</prop>
-                <!-- Use SMTP-AUTH to authenticate to SMTP server -->
-                <prop key="mail.smtp.auth">true</prop>
-                <!-- Use TLS to encrypt communication with SMTP server -->
-                <prop key="mail.smtp.starttls.enable">true</prop>
-                <prop key="mail.debug">true</prop>
-            </props>
-        </property>
-    </bean>
-
-    <bean id="alertMailMessage" class="org.springframework.mail.SimpleMailMessage">
-        <property name="from">            
-            <value>chenjunanmail@sina.com</value>
-        </property>
-        <property name="to">            
-            <value>514687572@qq.com</value>
-        </property>
-        <property name="subject" value="Alert - Exception occurred. Please investigate"/>
-    </bean>
-    
     <bean id="kindEditorController" class="com.yuguo.net.controller.KindEditorController">
 		<property name="kindEditorService" ref="kindEditorService"></property>
 	</bean>
